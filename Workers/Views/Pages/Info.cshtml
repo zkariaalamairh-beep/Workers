@@ -1,0 +1,36 @@
+﻿@model InfoPageViewModel
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/pages/information.css"
+          asp-append-version="true" />
+}
+
+
+
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<section class="information-page">
+    <div class="information-card">
+        <span class="information-icon" aria-hidden="true">
+            @Model.Icon
+        </span>
+
+        <h1>@Model.Title</h1>
+
+        <p>@Model.Description</p>
+
+        <div class="information-note">
+            سنضيف المحتوى الكامل لهذه الصفحة أثناء إكمال أقسام الموقع.
+        </div>
+
+        <a class="btn btn-primary"
+           asp-controller="Home"
+           asp-action="Index">
+            العودة إلى الرئيسية
+        </a>
+    </div>
+</section>

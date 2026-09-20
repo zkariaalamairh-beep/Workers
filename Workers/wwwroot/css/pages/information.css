@@ -1,0 +1,57 @@
+﻿.information-page {
+    min-height: calc(100vh - 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 45px 0;
+}
+
+.information-card {
+    width: 100%;
+    max-width: 680px;
+    padding: 45px;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 18px 45px rgba(23, 32, 51, 0.08);
+}
+
+.information-icon {
+    width: 65px;
+    height: 65px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-dark);
+    font-size: 1.1rem;
+    font-weight: 900;
+    border-radius: 18px;
+    background: var(--primary-light);
+}
+
+.information-card h1 {
+    margin: 20px 0 12px;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.information-card p {
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+.information-note {
+    margin: 25px 0;
+    padding: 15px;
+    color: #445164;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #f7f9fb;
+}
+
+@media (max-width: 575px) {
+    .information-card {
+        padding: 30px 20px;
+    }
+}

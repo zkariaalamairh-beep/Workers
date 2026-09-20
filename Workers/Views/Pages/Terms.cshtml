@@ -1,0 +1,656 @@
+﻿@{
+    ViewData["Title"] = "الشروط والأحكام";
+
+    // غيّر هذا النص إلى تاريخ اعتماد الشروط عند الإطلاق.
+    const string lastUpdated = "يُحدّد عند إطلاق المنصة";
+}
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/pages/legal.css"
+          asp-append-version="true" />
+}
+
+<div class="legal-page">
+
+    <section class="legal-hero">
+        <div class="legal-hero-content">
+            <span class="legal-label">
+                § قواعد استخدام المنصة
+            </span>
+
+            <h1>الشروط والأحكام</h1>
+
+            <p class="legal-hero-description">
+                تنظّم هذه الشروط استخدام منصة عمّال والعلاقة
+                بين المنصة والعملاء ومقدمي الخدمات وعمال
+                اليومية. يرجى قراءتها قبل إنشاء الحساب أو
+                إرسال طلب خدمة.
+            </p>
+
+            <div class="legal-document-meta">
+                <span>
+                    📅 آخر تحديث: @lastUpdated
+                </span>
+
+                <span>
+                    📄 الإصدار الأول
+                </span>
+
+                <span>
+                    ⚖ تنطبق على مستخدمي عمّال
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <aside class="legal-summary">
+        <span class="legal-summary-icon"
+              aria-hidden="true">
+            ✓
+        </span>
+
+        <div>
+            <strong>باستخدامك لمنصة عمّال</strong>
+
+            <p>
+                فإنك توافق على استخدام المنصة بطريقة قانونية
+                ومسؤولة، وتقديم معلومات صحيحة، واحترام حقوق
+                العملاء ومقدمي الخدمات.
+            </p>
+        </div>
+    </aside>
+
+    <div class="legal-layout">
+
+        <aside class="legal-sidebar">
+            <h2>محتويات الشروط</h2>
+
+            <nav class="legal-navigation"
+                 aria-label="محتويات الشروط والأحكام">
+
+                <a href="#terms-acceptance">
+                    قبول الشروط
+                </a>
+
+                <a href="#terms-platform">
+                    دور المنصة
+                </a>
+
+                <a href="#terms-eligibility">
+                    أهلية الاستخدام
+                </a>
+
+                <a href="#terms-accounts">
+                    الحسابات
+                </a>
+
+                <a href="#terms-providers">
+                    مقدمو الخدمات
+                </a>
+
+                <a href="#terms-customers">
+                    العملاء
+                </a>
+
+                <a href="#terms-requests">
+                    طلبات الخدمات
+                </a>
+
+                <a href="#terms-prices">
+                    الأسعار والدفع
+                </a>
+
+                <a href="#terms-cancellation">
+                    الإلغاء
+                </a>
+
+                <a href="#terms-reviews">
+                    التقييمات
+                </a>
+
+                <a href="#terms-prohibited">
+                    الاستخدامات الممنوعة
+                </a>
+
+                <a href="#terms-liability">
+                    المسؤولية
+                </a>
+
+                <a href="#terms-suspension">
+                    إيقاف الحساب
+                </a>
+
+                <a href="#terms-changes">
+                    تحديث الشروط
+                </a>
+
+                <a href="#terms-contact">
+                    التواصل
+                </a>
+            </nav>
+
+            <div class="legal-sidebar-help">
+                <p>
+                    هل تحتاج إلى توضيح أحد الشروط؟
+                </p>
+
+                <a asp-controller="Pages"
+                   asp-action="Support">
+                    مركز الدعم
+                </a>
+            </div>
+        </aside>
+
+        <main class="legal-document">
+
+            <section id="terms-acceptance"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">01</span>
+                    <h2>قبول الشروط</h2>
+                </div>
+
+                <p>
+                    يعد وصولك إلى منصة عمّال أو إنشاء حساب أو
+                    استخدام أي من خدماتها موافقة منك على هذه
+                    الشروط وعلى سياسة الخصوصية.
+                </p>
+
+                <p>
+                    إذا كنت لا توافق على هذه الشروط، فيجب عدم
+                    إنشاء حساب أو استخدام ميزات المنصة التي
+                    تتطلب الموافقة عليها.
+                </p>
+            </section>
+
+            <section id="terms-platform"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">02</span>
+                    <h2>دور منصة عمّال</h2>
+                </div>
+
+                <p>
+                    عمّال منصة تقنية تساعد العملاء في الوصول
+                    إلى مقدمي الخدمات المهنية وعمال اليومية،
+                    وتوفر أدوات للبحث وعرض الملفات وإرسال
+                    الطلبات والتقييم.
+                </p>
+
+                <div class="legal-warning">
+                    <strong>المنصة وسيط تقني</strong>
+
+                    <p>
+                        ما لم يُذكر خلاف ذلك صراحة، لا تكون
+                        المنصة طرفًا مباشرًا في عقد تنفيذ العمل
+                        بين العميل ومقدم الخدمة، ولا تعد صاحب
+                        عمل لمقدمي الخدمات أو عمال اليومية.
+                    </p>
+                </div>
+            </section>
+
+            <section id="terms-eligibility"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">03</span>
+                    <h2>أهلية استخدام المنصة</h2>
+                </div>
+
+                <ul class="legal-list">
+                    <li>
+                        يجب أن تكون قادرًا قانونيًا على إبرام
+                        الاتفاقات في بلدك.
+                    </li>
+
+                    <li>
+                        إذا كنت قاصرًا، يجب استخدام المنصة
+                        بإشراف ولي الأمر ووفق القانون المحلي.
+                    </li>
+
+                    <li>
+                        يجب ألا يكون حسابك موقوفًا سابقًا بسبب
+                        مخالفة جوهرية.
+                    </li>
+
+                    <li>
+                        يجب استخدام المنصة لأغراض قانونية
+                        ومشروعة فقط.
+                    </li>
+                </ul>
+            </section>
+
+            <section id="terms-accounts"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">04</span>
+                    <h2>الحسابات ومعلومات المستخدم</h2>
+                </div>
+
+                <ul class="legal-list">
+                    <li>
+                        يجب تقديم معلومات صحيحة وحديثة عند
+                        إنشاء الحساب.
+                    </li>
+
+                    <li>
+                        أنت مسؤول عن حماية كلمة المرور وعدم
+                        مشاركتها مع أي شخص.
+                    </li>
+
+                    <li>
+                        لا يجوز انتحال هوية شخص أو جهة أخرى.
+                    </li>
+
+                    <li>
+                        لا يجوز إنشاء حسابات بقصد الاحتيال أو
+                        تجاوز قرار الإيقاف.
+                    </li>
+
+                    <li>
+                        يجب إبلاغنا عند الاشتباه باستخدام
+                        الحساب دون إذنك.
+                    </li>
+                </ul>
+
+                <p>
+                    يجوز للشخص استخدام حسابه كعميل، ويمكنه
+                    كذلك إنشاء ملف مقدم خدمة وفق المتطلبات
+                    المعتمدة في المنصة.
+                </p>
+            </section>
+
+            <section id="terms-providers"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">05</span>
+                    <h2>التزامات مقدم الخدمة</h2>
+                </div>
+
+                <p>
+                    يلتزم مقدم الخدمة أو عامل اليومية بما يلي:
+                </p>
+
+                <ul class="legal-list">
+                    <li>
+                        تقديم وصف صادق ودقيق للمهارات والخبرة
+                        والخدمات والأسعار.
+                    </li>
+
+                    <li>
+                        عدم عرض خدمة لا يملك الخبرة أو الترخيص
+                        القانوني اللازم لتقديمها.
+                    </li>
+
+                    <li>
+                        الالتزام بالمواعيد المتفق عليها أو
+                        إبلاغ العميل عند وجود تغيير.
+                    </li>
+
+                    <li>
+                        تنفيذ العمل بمهنية واتباع متطلبات
+                        السلامة والقوانين المعمول بها.
+                    </li>
+
+                    <li>
+                        احترام خصوصية العميل وعدم استخدام
+                        بياناته خارج غرض تنفيذ الطلب.
+                    </li>
+
+                    <li>
+                        توضيح السعر ونطاق العمل قبل بدء
+                        التنفيذ قدر الإمكان.
+                    </li>
+                </ul>
+            </section>
+
+            <section id="terms-customers"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">06</span>
+                    <h2>التزامات العميل</h2>
+                </div>
+
+                <ul class="legal-list">
+                    <li>
+                        تقديم وصف واضح وصحيح للعمل المطلوب.
+                    </li>
+
+                    <li>
+                        تحديد موقع وموعد مناسبين لتنفيذ
+                        الخدمة.
+                    </li>
+
+                    <li>
+                        توفير بيئة آمنة ومعقولة لمقدم الخدمة.
+                    </li>
+
+                    <li>
+                        الاتفاق بوضوح على السعر ونطاق العمل.
+                    </li>
+
+                    <li>
+                        عدم طلب أعمال مخالفة للقانون أو تعرض
+                        الآخرين للخطر.
+                    </li>
+
+                    <li>
+                        دفع المبلغ المتفق عليه بعد تنفيذ
+                        الخدمة وفق الاتفاق بين الطرفين.
+                    </li>
+                </ul>
+            </section>
+
+            <section id="terms-requests"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">07</span>
+                    <h2>طلبات الخدمات والاتفاق</h2>
+                </div>
+
+                <p>
+                    إرسال طلب خدمة لا يعني قبول مقدم الخدمة
+                    له تلقائيًا. يصبح الطلب مقبولًا عندما يقوم
+                    مقدم الخدمة بالموافقة عليه.
+                </p>
+
+                <ul class="legal-list">
+                    <li>
+                        يجب أن يحتوي الطلب على معلومات كافية
+                        لفهم العمل المطلوب.
+                    </li>
+
+                    <li>
+                        يمكن للطرفين الاتفاق على موعد وسعر
+                        ونطاق عمل محدد.
+                    </li>
+
+                    <li>
+                        يجب تسجيل التغييرات المهمة على السعر
+                        أو العمل بطريقة واضحة بين الطرفين.
+                    </li>
+
+                    <li>
+                        قد تظهر حالة الطلب مثل قيد الانتظار أو
+                        مقبول أو قيد التنفيذ أو مكتمل أو ملغي.
+                    </li>
+                </ul>
+            </section>
+
+            <section id="terms-prices"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">08</span>
+                    <h2>الأسعار والدفع</h2>
+                </div>
+
+                <p>
+                    قد تُعرض الأسعار كسعر ثابت أو بالساعة أو
+                    باليوم أو كسعر قابل للتفاوض، ويجب الاتفاق
+                    على السعر النهائي قبل بدء العمل.
+                </p>
+
+                <div class="legal-note">
+                    <strong>الدفع الإلكتروني</strong>
+
+                    <p>
+                        إذا لم تكن المنصة توفر نظام دفع
+                        إلكترونيًا، يتم الاتفاق على وسيلة الدفع
+                        مباشرة بين العميل ومقدم الخدمة، ويتحمل
+                        الطرفان مسؤولية توثيق الاتفاق.
+                    </p>
+                </div>
+
+                <p>
+                    في حال إضافة خدمات دفع مستقبلًا، قد تطبق
+                    شروط ورسوم إضافية يتم توضيحها قبل إتمام
+                    عملية الدفع.
+                </p>
+            </section>
+
+            <section id="terms-cancellation"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">09</span>
+                    <h2>الإلغاء وعدم الحضور</h2>
+                </div>
+
+                <p>
+                    يمكن إلغاء الطلب وفق حالته وسياسة الإلغاء
+                    المعروضة في المنصة. يُفضل الإلغاء قبل بدء
+                    العمل وإبلاغ الطرف الآخر في أقرب وقت.
+                </p>
+
+                <p>
+                    قد يؤدي تكرار إلغاء الطلبات أو عدم الحضور
+                    دون سبب معقول إلى تقييد الحساب أو إيقاف
+                    بعض ميزاته.
+                </p>
+            </section>
+
+            <section id="terms-reviews"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">10</span>
+                    <h2>التقييمات والتعليقات</h2>
+                </div>
+
+                <p>
+                    تهدف التقييمات إلى مشاركة تجربة حقيقية
+                    مرتبطة بطلب مكتمل. يجب أن تكون التقييمات
+                    صادقة وواضحة ومحترمة.
+                </p>
+
+                <ul class="legal-list">
+                    <li>لا يجوز نشر تقييم وهمي أو مضلل.</li>
+
+                    <li>
+                        لا يجوز استخدام التقييم للتهديد أو
+                        الابتزاز.
+                    </li>
+
+                    <li>
+                        يمنع نشر معلومات شخصية أو ألفاظ مسيئة.
+                    </li>
+
+                    <li>
+                        يجوز للمنصة مراجعة أو إزالة المحتوى
+                        المخالف لهذه الشروط.
+                    </li>
+                </ul>
+            </section>
+
+            <section id="terms-prohibited"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">11</span>
+                    <h2>الاستخدامات الممنوعة</h2>
+                </div>
+
+                <p>يمنع استخدام المنصة من أجل:</p>
+
+                <ul class="legal-list">
+                    <li>الاحتيال أو التضليل أو انتحال الهوية.</li>
+
+                    <li>
+                        نشر محتوى غير قانوني أو مسيء أو ينتهك
+                        حقوق الآخرين.
+                    </li>
+
+                    <li>
+                        محاولة اختراق الموقع أو تعطيله أو
+                        الوصول غير المصرح به إلى الحسابات.
+                    </li>
+
+                    <li>
+                        جمع بيانات المستخدمين دون موافقتهم.
+                    </li>
+
+                    <li>
+                        عرض أو طلب خدمات خطرة أو ممنوعة
+                        قانونيًا.
+                    </li>
+
+                    <li>
+                        إرسال الرسائل المزعجة أو الإعلانات غير
+                        المرغوبة.
+                    </li>
+
+                    <li>
+                        التلاعب بالتقييمات أو حالات الطلبات.
+                    </li>
+                </ul>
+            </section>
+
+            <section id="terms-liability"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">12</span>
+                    <h2>السلامة وحدود المسؤولية</h2>
+                </div>
+
+                <p>
+                    يجب على العميل ومقدم الخدمة اتخاذ
+                    الاحتياطات المناسبة قبل الاجتماع أو تنفيذ
+                    العمل، والتحقق من طبيعة الخدمة والسعر
+                    والمتطلبات المهنية.
+                </p>
+
+                <p>
+                    تسعى المنصة إلى توفير معلومات وأدوات مفيدة،
+                    لكنها لا تضمن توافر مقدم خدمة دائمًا أو
+                    جودة نتيجة كل عمل أو صحة جميع المعلومات
+                    المقدمة من المستخدمين.
+                </p>
+
+                <div class="legal-warning">
+                    <strong>الخدمات بين المستخدمين</strong>
+
+                    <p>
+                        يكون كل طرف مسؤولًا عن أفعاله وعن
+                        الاتفاق الذي يعقده مع الطرف الآخر،
+                        وذلك ضمن الحدود التي يسمح بها القانون
+                        المعمول به.
+                    </p>
+                </div>
+            </section>
+
+            <section id="terms-suspension"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">13</span>
+                    <h2>تعليق الحساب أو إيقافه</h2>
+                </div>
+
+                <p>
+                    يجوز للمنصة تقييد الحساب أو تعليقه أو
+                    إيقافه عند وجود سبب معقول، بما في ذلك:
+                </p>
+
+                <ul class="legal-list">
+                    <li>مخالفة هذه الشروط.</li>
+                    <li>تقديم معلومات مضللة أو مزورة.</li>
+                    <li>وجود شكاوى سلامة جدية.</li>
+                    <li>الاحتيال أو إساءة استخدام المنصة.</li>
+                    <li>محاولات اختراق أو تعطيل النظام.</li>
+                </ul>
+
+                <p>
+                    يمكن للمستخدم التواصل مع الدعم للاستفسار
+                    عن القرار أو تقديم معلومات إضافية.
+                </p>
+            </section>
+
+            <section id="terms-changes"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">14</span>
+                    <h2>تحديث الشروط</h2>
+                </div>
+
+                <p>
+                    قد يتم تحديث هذه الشروط عند إضافة ميزات
+                    جديدة أو تغير طريقة تشغيل المنصة أو
+                    المتطلبات القانونية.
+                </p>
+
+                <p>
+                    سيتم نشر النسخة المحدّثة في هذه الصفحة،
+                    وقد يتم عرض إشعار داخل الموقع إذا كان
+                    التغيير جوهريًا.
+                </p>
+            </section>
+
+            <section id="terms-contact"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">15</span>
+                    <h2>القانون والتواصل</h2>
+                </div>
+
+                <p>
+                    تخضع هذه الشروط للقوانين المعمول بها في
+                    بلد تشغيل المنصة، مع مراعاة الحقوق
+                    الإلزامية التي يمنحها القانون للمستخدم.
+                </p>
+
+                <p>
+                    لأي استفسار أو شكوى تتعلق بهذه الشروط،
+                    يمكنك التواصل معنا عبر صفحة التواصل أو
+                    مركز الدعم.
+                </p>
+            </section>
+
+        </main>
+    </div>
+
+    <section class="legal-contact-card">
+        <div>
+            <h2>هل تحتاج إلى توضيح؟</h2>
+
+            <p>
+                يمكنك التواصل مع فريق الدعم للاستفسار عن أي
+                بند من بنود استخدام المنصة.
+            </p>
+        </div>
+
+        <div class="legal-contact-actions">
+            <a class="legal-contact-primary"
+               asp-controller="Pages"
+               asp-action="Contact">
+                تواصل معنا
+            </a>
+
+            <a class="legal-contact-secondary"
+               asp-controller="Pages"
+               asp-action="Support">
+                مركز الدعم
+            </a>
+        </div>
+    </section>
+
+    <div class="legal-related-document">
+        يرجى الاطلاع أيضًا على
+
+        <a asp-controller="Pages"
+           asp-action="Privacy">
+            سياسة الخصوصية
+        </a>
+    </div>
+
+</div>

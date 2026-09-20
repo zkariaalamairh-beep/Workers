@@ -1,0 +1,110 @@
+﻿.provider-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+    .provider-card:hover {
+        border-color: #8bb8c2;
+        box-shadow: 0 15px 35px rgba(21, 94, 117, 0.12);
+        transform: translateY(-4px);
+    }
+
+.provider-card-body {
+    flex: 1;
+    padding: 23px;
+}
+
+.provider-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.provider-avatar,
+.provider-avatar-placeholder {
+    width: 76px;
+    height: 76px;
+    flex-shrink: 0;
+    border-radius: 19px;
+}
+
+.provider-avatar {
+    object-fit: cover;
+}
+
+.provider-avatar-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #17365d, #18758a);
+}
+
+.provider-name {
+    margin-bottom: 7px;
+    font-size: 1.12rem;
+    font-weight: 800;
+}
+
+.provider-kind {
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.provider-info-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 17px;
+}
+
+.provider-description {
+    min-height: 53px;
+    margin: 17px 0 13px;
+    display: -webkit-box;
+    overflow: hidden;
+    color: var(--muted);
+    line-height: 1.8;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.service-tag {
+    padding: 5px 9px;
+    color: #164e63;
+    font-size: 0.78rem;
+    border-radius: 7px;
+    background: #cffafe;
+}
+
+.provider-card-footer {
+    padding: 15px 23px;
+    border-top: 1px solid var(--border);
+    background: #fcfcfe;
+}
+
+.provider-details-button {
+    width: 100%;
+    color: #ffffff;
+    font-weight: 700;
+    border-radius: 10px;
+    background: var(--primary);
+}
+
+    .provider-details-button:hover {
+        color: #ffffff;
+        background: var(--primary-dark);
+    }

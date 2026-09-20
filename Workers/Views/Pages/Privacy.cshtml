@@ -1,0 +1,569 @@
+﻿@{
+    ViewData["Title"] = "سياسة الخصوصية";
+
+    // غيّر هذا النص إلى تاريخ اعتماد السياسة عند الإطلاق.
+    const string lastUpdated = "يُحدّد عند إطلاق المنصة";
+}
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/pages/legal.css"
+          asp-append-version="true" />
+}
+
+<div class="legal-page">
+
+    <section class="legal-hero">
+        <div class="legal-hero-content">
+            <span class="legal-label">
+                🛡 الخصوصية وحماية البيانات
+            </span>
+
+            <h1>سياسة الخصوصية</h1>
+
+            <p class="legal-hero-description">
+                توضح هذه السياسة ما المعلومات التي قد تجمعها
+                منصة عمّال، ولماذا نستخدمها، وكيف نحافظ عليها،
+                وما الخيارات المتاحة لك عند استخدام المنصة.
+            </p>
+
+            <div class="legal-document-meta">
+                <span>
+                    📅 آخر تحديث: @lastUpdated
+                </span>
+
+                <span>
+                    📄 الإصدار الأول
+                </span>
+
+                <span>
+                    🌐 ينطبق على موقع عمّال
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <aside class="legal-summary">
+        <span class="legal-summary-icon"
+              aria-hidden="true">
+            i
+        </span>
+
+        <div>
+            <strong>ملخص سريع</strong>
+
+            <p>
+                نستخدم بياناتك لتشغيل الحسابات والطلبات وعرض
+                الخدمات القريبة وتحسين أمان المنصة. لا نبيع
+                بياناتك الشخصية، واستخدام الموقع الجغرافي
+                يحتاج إلى موافقتك.
+            </p>
+        </div>
+    </aside>
+
+    <div class="legal-layout">
+
+        <aside class="legal-sidebar">
+            <h2>محتويات السياسة</h2>
+
+            <nav class="legal-navigation"
+                 aria-label="محتويات سياسة الخصوصية">
+
+                <a href="#privacy-introduction">
+                    مقدمة
+                </a>
+
+                <a href="#privacy-data">
+                    البيانات التي نجمعها
+                </a>
+
+                <a href="#privacy-location">
+                    الموقع الجغرافي
+                </a>
+
+                <a href="#privacy-usage">
+                    استخدام البيانات
+                </a>
+
+                <a href="#privacy-sharing">
+                    مشاركة البيانات
+                </a>
+
+                <a href="#privacy-cookies">
+                    ملفات الارتباط
+                </a>
+
+                <a href="#privacy-retention">
+                    الاحتفاظ بالبيانات
+                </a>
+
+                <a href="#privacy-security">
+                    حماية المعلومات
+                </a>
+
+                <a href="#privacy-rights">
+                    حقوق المستخدم
+                </a>
+
+                <a href="#privacy-updates">
+                    تحديث السياسة
+                </a>
+
+                <a href="#privacy-contact">
+                    التواصل معنا
+                </a>
+            </nav>
+
+            <div class="legal-sidebar-help">
+                <p>
+                    لديك سؤال عن بياناتك أو خصوصيتك؟
+                </p>
+
+                <a asp-controller="Pages"
+                   asp-action="Contact">
+                    تواصل معنا
+                </a>
+            </div>
+        </aside>
+
+        <main class="legal-document">
+
+            <section id="privacy-introduction"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">01</span>
+                    <h2>مقدمة</h2>
+                </div>
+
+                <p>
+                    تحترم منصة عمّال خصوصية مستخدميها، وتهدف
+                    إلى التعامل مع البيانات الشخصية بطريقة
+                    واضحة ومسؤولة. تنطبق هذه السياسة على
+                    العملاء ومقدمي الخدمات وعمال اليومية وكل
+                    من يستخدم الموقع.
+                </p>
+
+                <p>
+                    باستخدام المنصة، فإنك تقر بأنك قرأت هذه
+                    السياسة وفهمت كيفية معالجة المعلومات وفقًا
+                    لما هو موضح فيها.
+                </p>
+            </section>
+
+            <section id="privacy-data"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">02</span>
+                    <h2>البيانات التي قد نجمعها</h2>
+                </div>
+
+                <p>
+                    تختلف البيانات التي نجمعها حسب طريقة
+                    استخدامك للمنصة والميزات التي تختارها.
+                </p>
+
+                <div class="legal-data-grid">
+                    <article class="legal-data-card">
+                        <span aria-hidden="true">👤</span>
+
+                        <h3>بيانات الحساب</h3>
+
+                        <p>
+                            الاسم الكامل، البريد الإلكتروني،
+                            رقم الهاتف، البلد، المدينة وبيانات
+                            تسجيل الدخول.
+                        </p>
+                    </article>
+
+                    <article class="legal-data-card">
+                        <span aria-hidden="true">🧰</span>
+
+                        <h3>بيانات مقدم الخدمة</h3>
+
+                        <p>
+                            النبذة المهنية، سنوات الخبرة،
+                            الخدمات، الأسعار، الصورة ونطاق
+                            تقديم الخدمة.
+                        </p>
+                    </article>
+
+                    <article class="legal-data-card">
+                        <span aria-hidden="true">📋</span>
+
+                        <h3>بيانات الطلبات</h3>
+
+                        <p>
+                            وصف العمل، الموعد، الميزانية،
+                            السعر المتفق عليه، العنوان وحالة
+                            الطلب.
+                        </p>
+                    </article>
+
+                    <article class="legal-data-card">
+                        <span aria-hidden="true">★</span>
+
+                        <h3>التقييمات والمحتوى</h3>
+
+                        <p>
+                            التقييمات والتعليقات والمعلومات
+                            التي تضيفها أو ترسلها عبر المنصة.
+                        </p>
+                    </article>
+
+                    <article class="legal-data-card">
+                        <span aria-hidden="true">📍</span>
+
+                        <h3>بيانات الموقع</h3>
+
+                        <p>
+                            إحداثيات موقعك عند موافقتك على
+                            استخدامها للبحث أو تحديد مكان
+                            تنفيذ الخدمة.
+                        </p>
+                    </article>
+
+                    <article class="legal-data-card">
+                        <span aria-hidden="true">⚙</span>
+
+                        <h3>البيانات التقنية</h3>
+
+                        <p>
+                            قد تشمل عنوان الإنترنت ونوع
+                            المتصفح وسجلات الأخطاء ومعلومات
+                            الأمان الضرورية لتشغيل الموقع.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="privacy-location"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">03</span>
+                    <h2>الموقع الجغرافي</h2>
+                </div>
+
+                <p>
+                    تستخدم المنصة الموقع الجغرافي لإظهار
+                    مقدمي الخدمات الأقرب إليك وترتيب النتائج
+                    حسب المسافة.
+                </p>
+
+                <ul class="legal-list">
+                    <li>
+                        لن يطلب المتصفح موقعك إلا بعد الضغط
+                        على ميزة الخدمات القريبة.
+                    </li>
+
+                    <li>
+                        لا تتم قراءة موقعك دون موافقتك الصريحة
+                        من خلال نافذة المتصفح.
+                    </li>
+
+                    <li>
+                        يمكنك رفض الإذن والاستمرار في تصفح
+                        الخدمات بالطريقة العادية.
+                    </li>
+
+                    <li>
+                        لا تستخدم المنصة موقعك لتتبّعك في
+                        الخلفية.
+                    </li>
+
+                    <li>
+                        قد يتم حفظ موقع تنفيذ الخدمة عند
+                        تأكيده ضمن طلب الخدمة.
+                    </li>
+
+                    <li>
+                        يمكنك إلغاء إذن الموقع من إعدادات
+                        المتصفح في أي وقت.
+                    </li>
+                </ul>
+
+                <div class="legal-note">
+                    <strong>البحث عن الخدمات القريبة</strong>
+
+                    <p>
+                        قد تُرسل الإحداثيات إلى الخادم لحساب
+                        المسافات، وقد تظهر بصورة مؤقتة ضمن
+                        السجلات التقنية، لكنها لا تُضاف إلى
+                        ملفك الشخصي لمجرد إجراء البحث.
+                    </p>
+                </div>
+            </section>
+
+            <section id="privacy-usage"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">04</span>
+                    <h2>كيف نستخدم البيانات؟</h2>
+                </div>
+
+                <ul class="legal-list">
+                    <li>
+                        إنشاء الحساب وإدارته والتحقق من هوية
+                        المستخدم عند تسجيل الدخول.
+                    </li>
+
+                    <li>
+                        عرض ملفات مقدمي الخدمات وخدماتهم.
+                    </li>
+
+                    <li>
+                        إنشاء طلبات الخدمات وإدارتها ومتابعة
+                        حالتها.
+                    </li>
+
+                    <li>
+                        حساب المسافات وعرض الخدمات الأقرب.
+                    </li>
+
+                    <li>
+                        إتاحة التقييم بعد اكتمال الطلب.
+                    </li>
+
+                    <li>
+                        تقديم الدعم والرد على الاستفسارات.
+                    </li>
+
+                    <li>
+                        حماية المنصة وكشف الاستخدام المخالف
+                        أو محاولات الاحتيال.
+                    </li>
+
+                    <li>
+                        تحسين تجربة الاستخدام وأداء الموقع.
+                    </li>
+                </ul>
+            </section>
+
+            <section id="privacy-sharing"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">05</span>
+                    <h2>مشاركة المعلومات</h2>
+                </div>
+
+                <p>
+                    لا نبيع البيانات الشخصية. قد تتم مشاركة
+                    الحد الأدنى اللازم من المعلومات في الحالات
+                    التالية:
+                </p>
+
+                <ul class="legal-list">
+                    <li>
+                        <strong>بين العميل ومقدم الخدمة:</strong>
+                        لإتمام الطلب والتواصل بشأن مكان وموعد
+                        تنفيذ العمل.
+                    </li>
+
+                    <li>
+                        <strong>مع مزودي الاستضافة والتقنية:</strong>
+                        بالقدر اللازم لتشغيل وحماية المنصة.
+                    </li>
+
+                    <li>
+                        <strong>لأسباب قانونية:</strong>
+                        إذا طُلب ذلك وفق إجراء قانوني صحيح أو
+                        لحماية المستخدمين والمنصة.
+                    </li>
+
+                    <li>
+                        <strong>بموافقتك:</strong>
+                        عند طلبك أو موافقتك الواضحة على مشاركة
+                        معلومة معينة.
+                    </li>
+                </ul>
+
+                <div class="legal-warning">
+                    <strong>المعلومات العامة</strong>
+
+                    <p>
+                        اسم مقدم الخدمة وصورته وخبرته وخدماته
+                        وتقييماته قد تكون ظاهرة لجميع زوار
+                        المنصة، لذلك يجب عدم نشر معلومات حساسة
+                        داخل النبذة أو وصف الخدمات.
+                    </p>
+                </div>
+            </section>
+
+            <section id="privacy-cookies"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">06</span>
+                    <h2>ملفات الارتباط</h2>
+                </div>
+
+                <p>
+                    تستخدم المنصة ملفات ارتباط ضرورية للحفاظ
+                    على جلسة تسجيل الدخول وحماية الطلبات
+                    وتذكر بعض خيارات الاستخدام.
+                </p>
+
+                <p>
+                    قد يؤدي تعطيل ملفات الارتباط الضرورية إلى
+                    عدم عمل تسجيل الدخول وبعض خصائص الحساب
+                    بصورة صحيحة.
+                </p>
+            </section>
+
+            <section id="privacy-retention"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">07</span>
+                    <h2>الاحتفاظ بالبيانات</h2>
+                </div>
+
+                <p>
+                    نحتفظ بالبيانات طالما كان الحساب نشطًا أو
+                    بالمدة اللازمة لتقديم الخدمات والوفاء
+                    بالمتطلبات الأمنية والقانونية وتسوية
+                    النزاعات.
+                </p>
+
+                <p>
+                    قد نحتفظ ببعض السجلات بعد إغلاق الحساب إذا
+                    كان ذلك ضروريًا لمنع الاحتيال أو تنفيذ
+                    التزامات قانونية أو حماية الحقوق.
+                </p>
+            </section>
+
+            <section id="privacy-security"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">08</span>
+                    <h2>حماية المعلومات</h2>
+                </div>
+
+                <p>
+                    نستخدم إجراءات تقنية وتنظيمية مناسبة
+                    لحماية البيانات، مثل الاتصال الآمن وإدارة
+                    صلاحيات الوصول وتخزين كلمات المرور بصيغة
+                    مشفّرة غير قابلة للقراءة المباشرة.
+                </p>
+
+                <div class="legal-warning">
+                    <strong>لا توجد حماية مطلقة</strong>
+
+                    <p>
+                        لا يمكن ضمان أمان أي نظام إلكتروني
+                        بنسبة مئة بالمئة. يجب عليك استخدام
+                        كلمة مرور قوية وعدم مشاركتها مع أي شخص.
+                    </p>
+                </div>
+            </section>
+
+            <section id="privacy-rights"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">09</span>
+                    <h2>حقوقك وخياراتك</h2>
+                </div>
+
+                <p>
+                    وفقًا للقوانين المطبقة، قد يكون بإمكانك:
+                </p>
+
+                <ul class="legal-list">
+                    <li>الوصول إلى بيانات حسابك.</li>
+                    <li>تعديل المعلومات غير الصحيحة.</li>
+                    <li>طلب حذف الحساب أو بعض البيانات.</li>
+                    <li>سحب إذن استخدام الموقع الجغرافي.</li>
+                    <li>
+                        الاعتراض على بعض طرق استخدام البيانات.
+                    </li>
+                    <li>
+                        تقديم استفسار أو شكوى تتعلق بالخصوصية.
+                    </li>
+                </ul>
+
+                <p>
+                    قد نطلب التحقق من هويتك قبل تنفيذ الطلب
+                    لحماية الحساب من الوصول غير المصرح به.
+                </p>
+            </section>
+
+            <section id="privacy-updates"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">10</span>
+                    <h2>تحديث سياسة الخصوصية</h2>
+                </div>
+
+                <p>
+                    قد نحدّث هذه السياسة عند إضافة ميزات جديدة
+                    أو تغيّر المتطلبات القانونية. سنعرض النسخة
+                    المحدّثة في هذه الصفحة مع توضيح تاريخ آخر
+                    تحديث.
+                </p>
+
+                <p>
+                    إذا كان التغيير جوهريًا، فقد نعرض إشعارًا
+                    واضحًا داخل المنصة قبل بدء تطبيقه.
+                </p>
+            </section>
+
+            <section id="privacy-contact"
+                     class="legal-section">
+
+                <div class="legal-section-heading">
+                    <span class="legal-section-number">11</span>
+                    <h2>التواصل معنا</h2>
+                </div>
+
+                <p>
+                    للاستفسار عن سياسة الخصوصية أو لطلب الوصول
+                    إلى بياناتك أو تعديلها أو حذفها، يمكنك
+                    التواصل معنا من خلال صفحة التواصل.
+                </p>
+            </section>
+
+        </main>
+    </div>
+
+    <section class="legal-contact-card">
+        <div>
+            <h2>لديك سؤال عن خصوصيتك؟</h2>
+
+            <p>
+                تواصل معنا وسنساعدك في فهم كيفية التعامل مع
+                بياناتك وخياراتك داخل المنصة.
+            </p>
+        </div>
+
+        <div class="legal-contact-actions">
+            <a class="legal-contact-primary"
+               asp-controller="Pages"
+               asp-action="Contact">
+                تواصل معنا
+            </a>
+
+            <a class="legal-contact-secondary"
+               asp-controller="Pages"
+               asp-action="Support">
+                مركز الدعم
+            </a>
+        </div>
+    </section>
+
+    <div class="legal-related-document">
+        باستخدام المنصة فإنك توافق كذلك على
+
+        <a asp-controller="Pages"
+           asp-action="Terms">
+            الشروط والأحكام
+        </a>
+    </div>
+
+</div>

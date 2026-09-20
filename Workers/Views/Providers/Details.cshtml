@@ -1,0 +1,281 @@
+﻿@model ProviderDetailsViewModel
+
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/pages/providers.css"
+          asp-append-version="true" />
+}
+
+
+
+
+@{
+    ViewData["Title"] = Model.FullName;
+
+    string kindText = Model.Kind == ProviderKind.DailyWorker
+        ? "عامل يومية"
+        : "مقدم خدمة مهني";
+
+    string firstLetter = string.IsNullOrWhiteSpace(Model.FullName)
+        ? "ع"
+        : Model.FullName.Trim()[0].ToString();
+
+    string location = string.Join(
+        "، ",
+        new[]
+        {
+            Model.CityName,
+            Model.CountryName
+        }.Where(value => !string.IsNullOrWhiteSpace(value))
+    );
+}
+
+<section class="provider-profile">
+    <div class="profile-header">
+        @if (!string.IsNullOrWhiteSpace(Model.ProfileImageUrl))
+        {
+            <img class="profile-large-avatar"
+                 src="@Model.ProfileImageUrl"
+                 alt="صورة @Model.FullName" />
+        }
+        else
+        {
+            <div class="profile-large-placeholder">
+                @firstLetter
+            </div>
+        }
+
+        <div class="profile-main-info">
+            <h1>@Model.FullName</h1>
+
+            <div>
+                @kindText
+
+                @if (Model.IsVerified)
+                {
+                    <span class="verified-badge me-2">
+                        ✓ حساب موثّق
+                    </span>
+                }
+            </div>
+
+            <div class="profile-meta">
+                <span class="info-badge rating-badge">
+                    ★ @Model.AverageRating.ToString("0.0")
+                    من @Model.ReviewsCount تقييم
+                </span>
+
+                <span class="info-badge">
+                    @Model.ExperienceYears سنوات خبرة
+                </span>
+
+                @if (!string.IsNullOrWhiteSpace(location))
+                {
+                    <span class="info-badge">
+                        📍 @location
+                    </span>
+                }
+
+                @if (Model.IsAvailable)
+                {
+                    <span class="availability">
+                        متاح للعمل
+                    </span>
+                }
+                else
+                {
+                    <span class="availability unavailable">
+                        غير متاح حاليًا
+                    </span>
+                }
+            </div>
+        </div>
+
+        @if (Model.IsAvailable)
+        {
+            <a class="btn btn-primary"
+               asp-controller="ServiceRequests"
+               asp-action="Create"
+               asp-route-providerId="@Model.UserId">
+                اطلب خدمة
+            </a>
+        }
+    </div>
+
+    <div class="details-grid">
+        <div>
+            <section class="content-panel">
+                <h2>نبذة عن مقدم الخدمة</h2>
+
+                <p class="mb-0 lh-lg text-secondary">
+                    @(string.IsNullOrWhiteSpace(Model.Bio)
+                                        ? "لم تتم إضافة نبذة حتى الآن."
+                                        : Model.Bio)
+                </p>
+            </section>
+
+            <section class="content-panel">
+                <h2>الخدمات المقدمة</h2>
+
+                @if (Model.Services.Count > 0)
+                {
+                    @foreach (ProviderServiceItemViewModel service
+                                    in Model.Services)
+                    {
+                        string priceUnitText =
+                        service.PriceUnit switch
+                        {
+                            PriceUnit.Fixed => "سعر ثابت",
+                            PriceUnit.Hourly => "بالساعة",
+                            PriceUnit.Daily => "باليوم",
+                            PriceUnit.Negotiable => "قابل للتفاوض",
+                            _ => string.Empty
+                        };
+
+                        <article class="provider-service-item">
+                            <div class="service-item-header">
+                                <div>
+                                    <h3>@service.Title</h3>
+
+                                    <span class="service-category-name">
+                                        @service.CategoryName
+                                    </span>
+                                </div>
+
+                                <div class="text-start">
+                                    @if (service.BasePrice.HasValue)
+                                    {
+                                        <div class="service-price">
+                                            @service.BasePrice.Value.ToString("0.##")
+                                        </div>
+                                    }
+
+                                    <small class="text-secondary">
+                                        @priceUnitText
+                                    </small>
+                                </div>
+                            </div>
+
+                            @if (!string.IsNullOrWhiteSpace(
+                                                service.Description))
+                            {
+                                <p class="text-secondary lh-lg mt-3">
+                                    @service.Description
+                                </p>
+                            }
+
+                            @if (Model.IsAvailable)
+                            {
+                                <a class="btn btn-sm btn-outline-primary mt-2"
+                                   asp-controller="ServiceRequests"
+                                   asp-action="Create"
+                                   asp-route-providerId="@Model.UserId"
+                                   asp-route-providerServiceId="@service.Id">
+                                    طلب هذه الخدمة
+                                </a>
+                            }
+                        </article>
+                    }
+                }
+                else
+                {
+                    <p class="text-secondary mb-0">
+                        لا توجد خدمات مضافة حاليًا.
+                    </p>
+                }
+            </section>
+        </div>
+
+        <aside>
+            <section class="content-panel">
+                <h2>معلومات العمل</h2>
+
+                <div class="mb-3">
+                    <strong>نوع الحساب</strong>
+
+                    <div class="text-secondary mt-1">
+                        @kindText
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <strong>الخبرة</strong>
+
+                    <div class="text-secondary mt-1">
+                        @Model.ExperienceYears سنوات
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <strong>نطاق تقديم الخدمة</strong>
+
+                    <div class="text-secondary mt-1">
+                        حتى
+                        @Model.ServiceRadiusKm.ToString("0.#")
+                        كم
+                    </div>
+                </div>
+
+                <div>
+                    <strong>الحالة</strong>
+
+                    <div class="text-secondary mt-1">
+                        @(Model.IsAvailable
+                                                ? "متاح لاستقبال الطلبات"
+                                                : "غير متاح لاستقبال الطلبات")
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-panel">
+                <h2>التقييمات</h2>
+
+                @if (Model.Reviews.Count > 0)
+                {
+                    @foreach (ReviewItemViewModel review
+                                    in Model.Reviews)
+                    {
+                        <article class="review-item">
+                            <div class="review-header">
+                                <strong>
+                                    @review.CustomerName
+                                </strong>
+
+                                <span class="review-date">
+                                    @review.CreatedAtUtc
+                                    .ToLocalTime()
+                                    .ToString("yyyy/MM/dd")
+                                </span>
+                            </div>
+
+                            <div class="stars mt-2"
+                                 aria-label="@review.Rating من 5">
+                                @for (int star = 1; star <= 5; star++)
+                                {
+                                    <span>
+                                        @(star <= review.Rating ? "★" : "☆")
+                                    </span>
+                                }
+                            </div>
+
+                            @if (!string.IsNullOrWhiteSpace(
+                                                review.Comment))
+                            {
+                                <p class="text-secondary lh-lg mt-2 mb-0">
+                                    @review.Comment
+                                </p>
+                            }
+                        </article>
+                    }
+                }
+                else
+                {
+                    <p class="text-secondary mb-0">
+                        لا توجد تقييمات حتى الآن.
+                    </p>
+                }
+            </section>
+        </aside>
+    </div>
+</section>

@@ -1,0 +1,252 @@
+﻿@{
+    ViewData["Title"] = "من نحن";
+}
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/pages/about.css"
+          asp-append-version="true" />
+}
+
+
+
+
+
+<section class="about-hero">
+    <div class="about-hero-content">
+        <span class="about-label">
+            عن منصة عمّال
+        </span>
+
+        <h1>
+            نقرّب أصحاب المهارات من الأشخاص الذين يحتاجون إليهم
+        </h1>
+
+        <p>
+            عمّال منصة تساعد العملاء في الوصول إلى مقدمي
+            الخدمات المهنية وعمال اليومية الأقرب إليهم،
+            ومقارنة الخدمات والخبرات والتقييمات قبل إرسال الطلب.
+        </p>
+
+        <div class="about-hero-actions">
+            <a class="btn about-primary-action"
+               asp-controller="Providers"
+               asp-action="Index">
+                استكشف مقدمي الخدمات
+            </a>
+
+            @if (User.Identity?.IsAuthenticated != true)
+            {
+                <a class="btn about-secondary-action"
+                   asp-controller="Account"
+                   asp-action="Register">
+                    انضم إلى عمّال
+                </a>
+            }
+        </div>
+    </div>
+
+    <div class="about-visual" aria-hidden="true">
+        <div class="about-visual-center">
+            <span class="about-logo-mark">ع</span>
+            <strong>عمّال</strong>
+            <small>الخدمة الأقرب إليك</small>
+        </div>
+
+        <span class="about-orbit-item orbit-customer">
+            👤 عميل
+        </span>
+
+        <span class="about-orbit-item orbit-professional">
+            🔧 مهني
+        </span>
+
+        <span class="about-orbit-item orbit-worker">
+            👷 عامل يومية
+        </span>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="about-section-heading">
+        <span>قصتنا</span>
+
+        <h2>
+            لماذا أنشأنا عمّال؟
+        </h2>
+    </div>
+
+    <div class="about-story-grid">
+        <article class="about-story-content">
+            <p>
+                إيجاد شخص مناسب لتنفيذ عمل ما قد يحتاج إلى
+                الكثير من السؤال والبحث، وفي المقابل يمتلك
+                كثير من المهنيين والعمال خبرات ممتازة لكنهم
+                لا يملكون وسيلة واضحة للوصول إلى العملاء.
+            </p>
+
+            <p>
+                من هنا جاءت فكرة عمّال: مكان واحد يجمع
+                العميل ومقدم الخدمة، ويوفر معلومات أوضح عن
+                نوع الخدمة والخبرة والسعر والتقييم والموقع.
+            </p>
+
+            <p>
+                هدفنا ليس فقط تسهيل الوصول إلى الخدمة،
+                بل بناء تجربة منظّمة تساعد الطرفين على
+                التواصل واتخاذ قرار أفضل.
+            </p>
+        </article>
+
+        <aside class="about-quote-card">
+            <span class="about-quote-mark">“</span>
+
+            <blockquote>
+                نؤمن بأن كل مهارة تستحق فرصة، وأن الوصول
+                إلى الشخص المناسب يجب أن يكون أبسط وأسرع.
+            </blockquote>
+
+            <strong>فريق عمّال</strong>
+        </aside>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="about-section-heading text-center">
+        <span>ما الذي نقدمه؟</span>
+
+        <h2>
+            تجربة أبسط للطرفين
+        </h2>
+
+        <p>
+            أدوات تساعد العميل ومقدم الخدمة من لحظة البحث
+            وحتى اكتمال العمل.
+        </p>
+    </div>
+
+    <div class="about-features-grid">
+        <article class="about-feature-card">
+            <span class="about-feature-icon">📍</span>
+
+            <h3>البحث حسب الموقع</h3>
+
+            <p>
+                عرض مقدمي الخدمات الأقرب إلى العميل بعد
+                موافقته على استخدام موقعه.
+            </p>
+        </article>
+
+        <article class="about-feature-card">
+            <span class="about-feature-icon">🔎</span>
+
+            <h3>معلومات واضحة</h3>
+
+            <p>
+                الاطلاع على الخبرة والخدمات والأسعار
+                والتقييمات قبل إرسال الطلب.
+            </p>
+        </article>
+
+        <article class="about-feature-card">
+            <span class="about-feature-icon">🧰</span>
+
+            <h3>مهنيون وعمال يومية</h3>
+
+            <p>
+                خدمات مهنية وأعمال يومية متنوعة في مكان
+                واحد وضمن تجربة موحّدة.
+            </p>
+        </article>
+
+        <article class="about-feature-card">
+            <span class="about-feature-icon">★</span>
+
+            <h3>تقييمات مرتبطة بالطلبات</h3>
+
+            <p>
+                إتاحة التقييم بعد اكتمال الخدمة للمساعدة
+                في بناء مجتمع أكثر وضوحًا.
+            </p>
+        </article>
+    </div>
+</section>
+
+<section class="about-values-section">
+    <div class="about-values-content">
+        <div class="about-section-heading">
+            <span>قيمنا</span>
+
+            <h2>
+                المبادئ التي نبني عليها المنصة
+            </h2>
+        </div>
+
+        <div class="about-values-list">
+            <article>
+                <span>01</span>
+
+                <div>
+                    <h3>الوضوح</h3>
+                    <p>
+                        عرض المعلومات المهمة بلغة بسيطة
+                        قبل اتخاذ قرار طلب الخدمة.
+                    </p>
+                </div>
+            </article>
+
+            <article>
+                <span>02</span>
+
+                <div>
+                    <h3>الخصوصية</h3>
+                    <p>
+                        عدم استخدام الموقع الجغرافي دون
+                        موافقة المستخدم الواضحة.
+                    </p>
+                </div>
+            </article>
+
+            <article>
+                <span>03</span>
+
+                <div>
+                    <h3>تكافؤ الفرص</h3>
+                    <p>
+                        مساعدة أصحاب المهارات والخبرات على
+                        عرض خدماتهم والوصول إلى عملاء جدد.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="about-final-cta">
+    <div>
+        <span>ابدأ الآن</span>
+
+        <h2>
+            الخدمة المناسبة قد تكون أقرب مما تتوقع
+        </h2>
+
+        <p>
+            استعرض مقدمي الخدمات أو استخدم موقعك لإظهار
+            الخيارات الأقرب إليك.
+        </p>
+    </div>
+
+    <div class="about-final-actions">
+        <button type="button"
+                class="btn about-location-action js-nearby-providers"
+                data-url="@Url.Action("Nearby", "Providers")">
+            ⌖ عرض الأقرب إليّ
+        </button>
+
+        <a class="btn about-browse-action"
+           asp-controller="Providers"
+           asp-action="Index">
+            تصفح الجميع
+        </a>
+    </div>
+</section>

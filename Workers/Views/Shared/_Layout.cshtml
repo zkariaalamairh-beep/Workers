@@ -1,0 +1,533 @@
+﻿@{
+    string pageTitle =
+        ViewData["Title"]?.ToString() ?? "الرئيسية";
+
+    string currentController =
+        ViewContext.RouteData.Values["controller"]?.ToString()
+        ?? string.Empty;
+
+    string selectedKind =
+        Context.Request.Query["kind"].ToString();
+}
+
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>@pageTitle - عمّال</title>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="~/css/Layout/header.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="~/css/Layout/footer.css"
+          asp-append-version="true" />
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+    <header class="app-header">
+        <nav class="navbar navbar-expand-lg app-navbar">
+            <div class="container header-container">
+
+                <a class="navbar-brand app-brand"
+                   asp-controller="Home"
+                   asp-action="Index">
+
+                    <span class="brand-icon" aria-hidden="true">
+                        ع
+                    </span>
+
+                    <span class="brand-text">
+                        عمّال
+                    </span>
+                </a>
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNavigation"
+                        aria-controls="mainNavigation"
+                        aria-expanded="false"
+                        aria-label="فتح القائمة">
+
+                    <span class="navbar-menu-icon">☰</span>
+                </button>
+
+                <div class="collapse navbar-collapse app-nav-content"
+                     id="mainNavigation">
+
+                    <ul class="navbar-nav app-navigation">
+
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Home" ? "active" : "")"
+                               asp-controller="Home"
+                               asp-action="Index">
+                                الرئيسية
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Providers" && selectedKind != "2" ? "active" : "")"
+                               asp-controller="Providers"
+                               asp-action="Index">
+                                مقدمو الخدمات
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Providers" && selectedKind == "2" ? "active" : "")"
+                               asp-controller="Providers"
+                               asp-action="Index"
+                               asp-route-kind="2">
+                                عمال اليومية
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <div class="navbar-actions">
+
+                        <button type="button"
+                                class="header-action header-location js-nearby-providers"
+                                data-url="@Url.Action("Nearby", "Providers")">
+
+                            <span aria-hidden="true">⌖</span>
+                            <span>بالقرب مني</span>
+                        </button>
+
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <form method="post"
+                                  asp-controller="Account"
+                                  asp-action="Logout"
+                                  class="header-form">
+
+                                <button type="submit"
+                                        class="header-action header-logout">
+                                    <span aria-hidden="true">↪</span>
+                                    تسجيل الخروج
+                                </button>
+                            </form>
+                        }
+                        else
+                        {
+                            <a class="header-action header-login"
+                               asp-controller="Account"
+                               asp-action="Login">
+                                دخول
+                            </a>
+
+                            <a class="header-action header-register"
+                               asp-controller="Account"
+                               asp-action="Register">
+                                حساب جديد
+                            </a>
+                        }
+
+
+
+
+
+                        <div class="dropdown header-more-dropdown">
+                            <button type="button"
+                                    id="headerMoreMenu"
+                                    class="header-action header-more-button dropdown-toggle"
+                                    data-bs-toggle="dropdown"
+                                    data-bs-display="static"
+                                    aria-expanded="false">
+                                <span class="more-dots" aria-hidden="true">•••</span>
+                                <span>المزيد</span>
+                                <span class="menu-caret" aria-hidden="true">⌄</span>
+                            </button>
+
+                            <ul class="dropdown-menu more-menu"
+                                aria-labelledby="headerMoreMenu">
+
+                                <li>
+                                    <a class="dropdown-item more-menu-item"
+                                       asp-controller="Pages"
+                                       asp-action="Support">
+
+                                        <span class="menu-item-icon" aria-hidden="true">
+                                            ؟
+                                        </span>
+
+                                        <span>
+                                            <strong>الدعم والمساعدة</strong>
+                                            <small>الحصول على مساعدة وحل المشكلات</small>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item more-menu-item"
+                                       asp-controller="Pages"
+                                       asp-action="Faq">
+
+                                        <span class="menu-item-icon" aria-hidden="true">
+                                            FAQ
+                                        </span>
+
+                                        <span>
+                                            <strong>الأسئلة الشائعة</strong>
+                                            <small>إجابات عن أكثر الأسئلة شيوعًا</small>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item more-menu-item"
+                                       asp-controller="Pages"
+                                       asp-action="Blog">
+
+                                        <span class="menu-item-icon" aria-hidden="true">
+                                            ✎
+                                        </span>
+
+                                        <span>
+                                            <strong>المدونة</strong>
+                                            <small>نصائح ومقالات مهنية</small>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item more-menu-item"
+                                       asp-controller="Pages"
+                                       asp-action="About">
+
+                                        <span class="menu-item-icon" aria-hidden="true">
+                                            i
+                                        </span>
+
+                                        <span>
+                                            <strong>من نحن</strong>
+                                            <small>تعرف أكثر على منصة عمّال</small>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item more-menu-item"
+                                       asp-controller="Pages"
+                                       asp-action="Contact">
+
+                                        <span class="menu-item-icon" aria-hidden="true">
+                                            ☎
+                                        </span>
+
+                                        <span>
+                                            <strong>تواصل معنا</strong>
+                                            <small>أرسل استفسارك أو ملاحظاتك</small>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item simple-menu-item"
+                                       asp-controller="Pages"
+                                       asp-action="Privacy">
+                                        سياسة الخصوصية
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item simple-menu-item"
+                                       asp-controller="Pages"
+                                       asp-action="Terms">
+                                        الشروط والأحكام
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="app-main">
+        <div class="container">
+            @if (TempData["SuccessMessage"] is string success)
+            {
+                <div class="alert alert-success alert-dismissible fade show mt-3"
+                     role="alert">
+                    @success
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="إغلاق">
+                    </button>
+                </div>
+            }
+
+            @if (TempData["ErrorMessage"] is string error)
+            {
+                <div class="alert alert-danger alert-dismissible fade show mt-3"
+                     role="alert">
+                    @error
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="إغلاق">
+                    </button>
+                </div>
+            }
+
+            @RenderBody()
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+
+            <section class="footer-callout">
+                <div class="footer-callout-content">
+                    <span class="footer-callout-label">
+                        فرصتك تبدأ من هنا
+                    </span>
+
+                    <h2>لديك مهارة أو خبرة مهنية؟</h2>
+
+                    <p>
+                        انضم إلى عمّال، اعرض خدماتك، وساعد العملاء
+                        القريبين منك في الوصول إليك بسهولة.
+                    </p>
+                </div>
+
+                <div class="footer-callout-actions">
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <a class="footer-primary-action"
+                           asp-controller="Providers"
+                           asp-action="Index">
+                            استكشف المنصة
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="footer-primary-action"
+                           asp-controller="Account"
+                           asp-action="Register">
+                            ابدأ الآن
+                        </a>
+                    }
+
+                    <a class="footer-secondary-action"
+                       asp-controller="Pages"
+                       asp-action="About">
+                        تعرف علينا
+                    </a>
+                </div>
+            </section>
+
+            <div class="footer-main">
+
+                <section class="footer-brand-section">
+                    <a class="footer-brand"
+                       asp-controller="Home"
+                       asp-action="Index">
+
+                        <span class="footer-brand-mark"
+                              aria-hidden="true">
+                            ع
+                        </span>
+
+                        <span>عمّال</span>
+                    </a>
+
+                    <p class="footer-description">
+                        منصة تساعدك في العثور على مقدمي الخدمات
+                        المهنية وعمال اليومية الأقرب إليك، مع إمكانية
+                        الاطلاع على الخبرات والخدمات والتقييمات قبل
+                        إرسال طلبك.
+                    </p>
+
+                    <div class="footer-identity-note">
+                        <span aria-hidden="true">✓</span>
+
+                        <span>
+                            اختيار أوضح، وصول أسرع، وخدمة أقرب.
+                        </span>
+                    </div>
+                </section>
+
+                <nav class="footer-column"
+                     aria-label="استكشف المنصة">
+
+                    <h3>استكشف</h3>
+
+                    <a asp-controller="Providers"
+                       asp-action="Index">
+                        مقدمو الخدمات
+                    </a>
+
+                    <a asp-controller="Providers"
+                       asp-action="Index"
+                       asp-route-kind="2">
+                        عمال اليومية
+                    </a>
+
+                    <button type="button"
+                            class="footer-link-button js-nearby-providers"
+                            data-url="@Url.Action("Nearby", "Providers")">
+                        الخدمات القريبة مني
+                    </button>
+
+                    @if (User.Identity?.IsAuthenticated != true)
+                    {
+                        <a asp-controller="Account"
+                           asp-action="Register">
+                            إنشاء حساب
+                        </a>
+                    }
+                </nav>
+
+                <nav class="footer-column"
+                     aria-label="معلومات عن المنصة">
+
+                    <h3>عن عمّال</h3>
+
+                    <a asp-controller="Pages"
+                       asp-action="About">
+                        من نحن
+                    </a>
+
+                    <a asp-controller="Pages"
+                       asp-action="Blog">
+                        المدونة
+                    </a>
+
+                    <a asp-controller="Pages"
+                       asp-action="Faq">
+                        الأسئلة الشائعة
+                    </a>
+                </nav>
+
+                <nav class="footer-column"
+                     aria-label="الدعم والمساعدة">
+
+                    <h3>المساعدة</h3>
+
+                    <a asp-controller="Pages"
+                       asp-action="Support">
+                        الدعم والمساعدة
+                    </a>
+
+                    <a asp-controller="Pages"
+                       asp-action="Contact">
+                        تواصل معنا
+                    </a>
+
+                    <a asp-controller="Pages"
+                       asp-action="Privacy">
+                        سياسة الخصوصية
+                    </a>
+
+                    <a asp-controller="Pages"
+                       asp-action="Terms">
+                        الشروط والأحكام
+                    </a>
+                </nav>
+            </div>
+
+            <section class="footer-trust"
+                     aria-label="ميزات منصة عمّال">
+
+                <div class="footer-trust-item">
+                    <span class="footer-trust-icon"
+                          aria-hidden="true">
+                        📍
+                    </span>
+
+                    <span>
+                        <strong>خدمات قريبة</strong>
+                        <small>نتائج حسب موقعك وبعد موافقتك</small>
+                    </span>
+                </div>
+
+                <div class="footer-trust-item">
+                    <span class="footer-trust-icon"
+                          aria-hidden="true">
+                        ★
+                    </span>
+
+                    <span>
+                        <strong>اختيار أوضح</strong>
+                        <small>خبرات وخدمات وتقييمات قبل الطلب</small>
+                    </span>
+                </div>
+
+                <div class="footer-trust-item">
+                    <span class="footer-trust-icon"
+                          aria-hidden="true">
+                        ◈
+                    </span>
+
+                    <span>
+                        <strong>خيارات متنوعة</strong>
+                        <small>مهنيون وعمال يومية في مكان واحد</small>
+                    </span>
+                </div>
+            </section>
+
+            <div class="footer-bottom">
+                <p>
+                    جميع الحقوق محفوظة © @DateTime.UtcNow.Year
+                    <strong>عمّال</strong>
+                </p>
+
+                <p class="footer-disclaimer">
+                    عمّال منصة تقنية للربط بين العملاء ومقدمي الخدمات.
+                </p>
+
+                <div class="footer-legal-links">
+                    <a asp-controller="Pages"
+                       asp-action="Privacy">
+                        الخصوصية
+                    </a>
+
+                    <span aria-hidden="true">•</span>
+
+                    <a asp-controller="Pages"
+                       asp-action="Terms">
+                        الشروط
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script src="~/js/site.js"
+            asp-append-version="true">
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

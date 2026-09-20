@@ -1,0 +1,154 @@
+﻿@model IReadOnlyList<ProviderCardViewModel>
+
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/pages/providers.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="~/css/components/provider-card.css"
+          asp-append-version="true" />
+}
+
+@{
+    ViewData["Title"] = "الأقرب إليّ";
+
+    string latitude =
+        Context.Request.Query["latitude"].ToString();
+
+    string longitude =
+        Context.Request.Query["longitude"].ToString();
+
+    string selectedKind =
+        Context.Request.Query["kind"].ToString();
+
+    double distanceValue =
+        ViewBag.MaxDistanceKm is double distance
+            ? distance
+            : 20;
+
+    string maxDistance =
+        distanceValue.ToString(
+            "0.##",
+            CultureInfo.InvariantCulture
+        );
+}
+
+<section class="page-hero">
+    <div>
+        <h1>مقدمو الخدمات الأقرب إليك</h1>
+
+        <p>
+            النتائج مرتبة من الأقرب إلى الأبعد حسب
+            موقعك الحالي ونطاق عمل مقدم الخدمة.
+        </p>
+    </div>
+
+    <button type="button"
+            class="btn hero-location-button js-nearby-providers">
+        تحديث موقعي
+    </button>
+</section>
+
+<form method="get"
+      asp-controller="Providers"
+      asp-action="Nearby"
+      class="filter-panel">
+
+    <input type="hidden"
+           name="latitude"
+           value="@latitude" />
+
+    <input type="hidden"
+           name="longitude"
+           value="@longitude" />
+
+    <div class="row g-3">
+        <div class="col-lg-4">
+            <label for="maxDistanceKm"
+                   class="form-label">
+                أقصى مسافة بالكيلومتر
+            </label>
+
+            <input id="maxDistanceKm"
+                   name="maxDistanceKm"
+                   type="number"
+                   min="1"
+                   max="100"
+                   step="1"
+                   value="@maxDistance"
+                   class="form-control" />
+        </div>
+
+        <div class="col-lg-4">
+            <label for="kind"
+                   class="form-label">
+                نوع مقدم الخدمة
+            </label>
+
+            <select id="kind"
+                    name="kind"
+                    class="form-select">
+
+                <option value="">
+                    جميع الأنواع
+                </option>
+
+                <option value="1"
+                        selected="@(selectedKind == "1")">
+                    مهنيون
+                </option>
+
+                <option value="2"
+                        selected="@(selectedKind == "2")">
+                    عمال يومية
+                </option>
+            </select>
+        </div>
+
+        <div class="col-lg-4 d-flex align-items-end">
+            <button type="submit"
+                    class="btn btn-primary w-100">
+                تحديث النتائج
+            </button>
+        </div>
+    </div>
+</form>
+
+<div class="results-heading">
+    <h2>الأقرب حسب موقعك</h2>
+
+    <span class="results-count">
+        @Model.Count نتيجة
+    </span>
+</div>
+
+@if (Model.Count > 0)
+{
+    <div class="provider-grid">
+        @foreach (ProviderCardViewModel provider in Model)
+        {
+            <partial name="_ProviderCard"
+                     model="provider" />
+        }
+    </div>
+}
+else
+{
+    <div class="empty-state">
+        <span class="empty-state-icon">📍</span>
+
+        <h3>لا يوجد مقدمو خدمات ضمن هذه المسافة</h3>
+
+        <p>
+            جرّب زيادة أقصى مسافة أو تغيير نوع مقدم الخدمة.
+        </p>
+
+        <a asp-controller="Providers"
+           asp-action="Index"
+           class="btn btn-primary">
+            عرض جميع مقدمي الخدمات
+        </a>
+    </div>
+}

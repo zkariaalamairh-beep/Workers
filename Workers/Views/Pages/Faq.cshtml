@@ -1,0 +1,250 @@
+﻿@model FaqPageViewModel
+
+@{
+    ViewData["Title"] = "الأسئلة الشائعة";
+}
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/pages/faq.css"
+          asp-append-version="true" />
+}
+
+
+
+
+<section class="faq-hero">
+    <div>
+        <span class="faq-label">
+            مركز المعرفة
+        </span>
+
+        <h1>كيف يمكننا مساعدتك؟</h1>
+
+        <p>
+            ابحث عن إجابتك أو تصفح الأسئلة المتعلقة
+            بالحساب والموقع والطلبات والتقييمات.
+        </p>
+    </div>
+
+    <div class="faq-search-box">
+        <label for="faqSearch"
+               class="visually-hidden">
+            ابحث في الأسئلة الشائعة
+        </label>
+
+        <span aria-hidden="true">⌕</span>
+
+        <input id="faqSearch"
+               type="search"
+               autocomplete="off"
+               placeholder="ابحث عن سؤال..." />
+
+        <button id="clearFaqSearch"
+                type="button"
+                hidden>
+            مسح
+        </button>
+    </div>
+</section>
+
+<section class="faq-content">
+    <div class="faq-introduction">
+        <h2>الأسئلة الشائعة</h2>
+
+        <p>
+            اضغط على السؤال لإظهار الإجابة.
+        </p>
+    </div>
+
+    <div class="accordion"
+         id="faqAccordion">
+
+        @foreach (FaqCategoryViewModel category in Model.Categories)
+        {
+            <section class="faq-category">
+                <div class="faq-category-heading">
+                    <span aria-hidden="true">
+                        @category.Icon
+                    </span>
+
+                    <h2>@category.Title</h2>
+                </div>
+
+                <div class="faq-category-questions">
+                    @foreach (FaqItemViewModel item in category.Questions)
+                    {
+                        string headingId = $"{item.Id}-heading";
+
+                        <article class="accordion-item faq-accordion-item"
+                                 data-faq-search="@($"{item.Question} {item.Answer}")">
+
+                            <h3 class="accordion-header"
+                                id="@headingId">
+
+                                <button class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#@item.Id"
+                                        aria-expanded="false"
+                                        aria-controls="@item.Id">
+
+                                    @item.Question
+                                </button>
+                            </h3>
+
+                            <div id="@item.Id"
+                                 class="accordion-collapse collapse"
+                                 aria-labelledby="@headingId"
+                                 data-bs-parent="#faqAccordion">
+
+                                <div class="accordion-body">
+                                    @item.Answer
+                                </div>
+                            </div>
+                        </article>
+                    }
+                </div>
+            </section>
+        }
+    </div>
+
+    <div id="faqNoResults"
+         class="faq-no-results"
+         hidden>
+
+        <span aria-hidden="true">🔍</span>
+
+        <h2>لم نجد نتيجة مطابقة</h2>
+
+        <p>
+            جرّب استخدام كلمات أقصر أو تواصل مع فريق الدعم.
+        </p>
+
+        <a class="btn btn-primary"
+           asp-controller="Pages"
+           asp-action="Support">
+            الذهاب إلى الدعم
+        </a>
+    </div>
+</section>
+
+<section class="faq-support-card">
+    <div>
+        <span>لم تجد إجابتك؟</span>
+
+        <h2>فريق الدعم جاهز لمساعدتك</h2>
+
+        <p>
+            أرسل لنا استفسارك أو تفاصيل المشكلة التي تواجهك.
+        </p>
+    </div>
+
+    <div class="faq-support-actions">
+        <a class="btn faq-support-primary"
+           asp-controller="Pages"
+           asp-action="Support">
+            الدعم والمساعدة
+        </a>
+
+        <a class="btn faq-support-secondary"
+           asp-controller="Pages"
+           asp-action="Contact">
+            تواصل معنا
+        </a>
+    </div>
+</section>
+
+
+
+
+
+@section Scripts {
+
+
+
+
+    <script>
+        (() => {
+            const searchInput =
+                document.getElementById("faqSearch");
+
+            const clearButton =
+                document.getElementById("clearFaqSearch");
+
+            const questions =
+                Array.from(document.querySelectorAll(
+                    ".faq-accordion-item"
+                ));
+
+            const categories =
+                Array.from(document.querySelectorAll(
+                    ".faq-category"
+                ));
+
+            const noResults =
+                document.getElementById("faqNoResults");
+
+            if (!searchInput) {
+                return;
+            }
+
+            function normalizeText(value) {
+                return value
+                    .toLocaleLowerCase("ar")
+                    .replace(/[أإآ]/g, "ا")
+                    .replace(/ة/g, "ه")
+                    .replace(/ى/g, "ي")
+                    .trim();
+            }
+
+            function filterQuestions() {
+                const query =
+                    normalizeText(searchInput.value);
+
+                let visibleCount = 0;
+
+                questions.forEach(function (question) {
+                    const content = normalizeText(
+                        question.dataset.faqSearch || ""
+                    );
+
+                    const isVisible =
+                        !query || content.includes(query);
+
+                    question.hidden = !isVisible;
+
+                    if (isVisible) {
+                        visibleCount++;
+                    }
+                });
+
+                categories.forEach(function (category) {
+                    const hasVisibleQuestions =
+                        category.querySelector(
+                            ".faq-accordion-item:not([hidden])"
+                        ) !== null;
+
+                    category.hidden = !hasVisibleQuestions;
+                });
+
+                noResults.hidden = visibleCount !== 0;
+                clearButton.hidden = query.length === 0;
+            }
+
+            searchInput.addEventListener(
+                "input",
+                filterQuestions
+            );
+
+            clearButton.addEventListener(
+                "click",
+                function () {
+                    searchInput.value = "";
+                    filterQuestions();
+                    searchInput.focus();
+                }
+            );
+        })();
+    </script>
+}

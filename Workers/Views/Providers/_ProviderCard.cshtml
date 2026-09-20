@@ -1,0 +1,101 @@
+﻿@model ProviderCardViewModel
+
+@{
+    string kindText = Model.Kind == ProviderKind.DailyWorker
+        ? "عامل يومية"
+        : "مقدم خدمة مهني";
+
+    string firstLetter = string.IsNullOrWhiteSpace(Model.FullName)
+        ? "ع"
+        : Model.FullName.Trim()[0].ToString();
+}
+
+<article class="provider-card">
+    <div class="provider-card-body">
+        <div class="provider-header">
+            @if (!string.IsNullOrWhiteSpace(Model.ProfileImageUrl))
+            {
+                <img class="provider-avatar"
+                     src="@Model.ProfileImageUrl"
+                     alt="صورة @Model.FullName" />
+            }
+            else
+            {
+                <div class="provider-avatar-placeholder">
+                    @firstLetter
+                </div>
+            }
+
+            <div>
+                <h2 class="provider-name">
+                    @Model.FullName
+                </h2>
+
+                @if (Model.IsVerified)
+                {
+                    <span class="verified-badge">
+                        ✓ حساب موثّق
+                    </span>
+                }
+
+                <div class="provider-kind">
+                    @kindText
+                </div>
+            </div>
+        </div>
+
+        <div class="provider-info-row">
+            <span class="info-badge rating-badge">
+                ★ @Model.AverageRating.ToString("0.0")
+                (@Model.ReviewsCount)
+            </span>
+
+            <span class="info-badge">
+                @Model.ExperienceYears سنوات خبرة
+            </span>
+
+            @if (!string.IsNullOrWhiteSpace(Model.CityName))
+            {
+                <span class="info-badge">
+                    📍 @Model.CityName
+                </span>
+            }
+
+            @if (Model.DistanceKm.HasValue)
+            {
+                <span class="info-badge distance-badge">
+                    يبعد
+                    @Model.DistanceKm.Value.ToString("0.0")
+                    كم
+                </span>
+            }
+        </div>
+
+        <p class="provider-description">
+            @(string.IsNullOrWhiteSpace(Model.Bio)
+                        ? "لا يوجد وصف مضاف حتى الآن."
+                        : Model.Bio)
+        </p>
+
+        @if (Model.FeaturedServices.Count > 0)
+        {
+            <div class="service-tags">
+                @foreach (string service in Model.FeaturedServices)
+                {
+                    <span class="service-tag">
+                        @service
+                    </span>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="provider-card-footer">
+        <a class="btn provider-details-button"
+           asp-controller="Providers"
+           asp-action="Details"
+           asp-route-id="@Model.UserId">
+            عرض الملف والخدمات
+        </a>
+    </div>
+</article>

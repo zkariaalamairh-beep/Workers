@@ -1,0 +1,92 @@
+﻿@model LoginViewModel
+
+
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/pages/account.css"
+          asp-append-version="true" />
+}
+
+@{
+    ViewData["Title"] = "تسجيل الدخول";
+}
+
+<section class="auth-page">
+    <div class="auth-card">
+        <div class="auth-heading">
+            <span class="auth-icon">👤</span>
+
+            <h1>تسجيل الدخول</h1>
+
+            <p>
+                سجل الدخول لإرسال الطلبات ومتابعتها.
+            </p>
+        </div>
+
+        <form method="post"
+              asp-controller="Account"
+              asp-action="Login">
+
+            <input asp-for="ReturnUrl" type="hidden" />
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger validation-summary">
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email"
+                       class="form-label">
+                </label>
+
+                <input asp-for="Email"
+                       class="form-control"
+                       autocomplete="email"
+                       placeholder="example@email.com" />
+
+                <span asp-validation-for="Email"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password"
+                       class="form-label">
+                </label>
+
+                <input asp-for="Password"
+                       class="form-control"
+                       autocomplete="current-password"
+                       placeholder="أدخل كلمة المرور" />
+
+                <span asp-validation-for="Password"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="form-check mb-4">
+                <input asp-for="RememberMe"
+                       class="form-check-input" />
+
+                <label asp-for="RememberMe"
+                       class="form-check-label">
+                </label>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary w-100 auth-submit">
+                تسجيل الدخول
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            ليس لديك حساب؟
+
+            <a asp-controller="Account"
+               asp-action="Register"
+               asp-route-returnUrl="@Model.ReturnUrl">
+                أنشئ حسابًا جديدًا
+            </a>
+        </div>
+    </div>
+</section>

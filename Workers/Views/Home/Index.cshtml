@@ -1,0 +1,187 @@
+﻿@{
+    ViewData["Title"] = "الرئيسية";
+}
+
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/pages/home.css"
+          asp-append-version="true" />
+}
+
+<section class="home-hero motion-hero">
+
+    <div class="home-hero-content">
+        <span class="hero-label">
+            خدمات مهنية وعمال يومية بالقرب منك
+        </span>
+
+        <h1>
+            اعثر على الشخص المناسب لإنجاز عملك
+        </h1>
+
+        <p>
+            ابحث عن المهنيين وعمال اليومية، شاهد خدماتهم
+            وتقييماتهم، واختر مقدم الخدمة الأقرب إلى موقعك.
+        </p>
+
+        <div class="hero-actions">
+
+            <a class="btn hero-primary-button"
+               asp-controller="Providers"
+               asp-action="Index">
+                تصفح مقدمي الخدمات
+            </a>
+
+            <button type="button"
+                    class="btn hero-location-button js-nearby-providers"
+                    data-url="@Url.Action("Nearby", "Providers")">
+                <span aria-hidden="true">⌖</span>
+                عرض الأقرب إليّ
+            </button>
+
+        </div>
+    </div>
+
+    <div class="hero-motion" aria-hidden="true">
+
+        <div class="motion-radar">
+            <span class="radar-pulse pulse-one"></span>
+            <span class="radar-pulse pulse-two"></span>
+
+            <div class="radar-core">
+                <span>⌖</span>
+                <small>موقعك</small>
+            </div>
+        </div>
+
+        <div class="motion-service-card motion-card-one">
+            <span class="motion-card-icon">⚡</span>
+
+            <span>
+                <strong>كهربائي</strong>
+                <small>على بُعد 1.2 كم</small>
+            </span>
+        </div>
+
+        <div class="motion-service-card motion-card-two">
+            <span class="motion-card-icon">🔧</span>
+
+            <span>
+                <strong>سبّاك</strong>
+                <small>على بُعد 2.4 كم</small>
+            </span>
+        </div>
+
+        <div class="motion-service-card motion-card-three">
+            <span class="motion-card-icon">👷</span>
+
+            <span>
+                <strong>عامل يومية</strong>
+                <small>متاح الآن</small>
+            </span>
+        </div>
+
+    </div>
+</section>
+
+<section class="section-block">
+    <div class="section-heading">
+        <h2>ماذا تحتاج اليوم؟</h2>
+        <p>
+            اختر نوع الخدمة للوصول إلى مقدم الخدمة المناسب.
+        </p>
+    </div>
+
+    <div class="category-grid">
+        <a class="category-card"
+           asp-controller="Providers"
+           asp-action="Index"
+           asp-route-search="كهرباء">
+            <span class="category-icon">⚡</span>
+            <strong>كهرباء</strong>
+        </a>
+
+        <a class="category-card"
+           asp-controller="Providers"
+           asp-action="Index"
+           asp-route-search="سباكة">
+            <span class="category-icon">🔧</span>
+            <strong>سباكة</strong>
+        </a>
+
+        <a class="category-card"
+           asp-controller="Providers"
+           asp-action="Index"
+           asp-route-search="دهان">
+            <span class="category-icon">🎨</span>
+            <strong>دهان</strong>
+        </a>
+
+        <a class="category-card"
+           asp-controller="Providers"
+           asp-action="Index"
+           asp-route-search="تنظيف">
+            <span class="category-icon">🧹</span>
+            <strong>تنظيف</strong>
+        </a>
+
+        <a class="category-card"
+           asp-controller="Providers"
+           asp-action="Index"
+           asp-route-search="نقل">
+            <span class="category-icon">🚚</span>
+            <strong>نقل أثاث</strong>
+        </a>
+
+        <a class="category-card"
+           asp-controller="Providers"
+           asp-action="Index"
+           asp-route-kind="2">
+            <span class="category-icon">👷</span>
+            <strong>عمال يومية</strong>
+        </a>
+    </div>
+</section>
+
+<section class="section-block">
+    <div class="section-heading">
+        <h2>كيف يعمل الموقع؟</h2>
+        <p>ثلاث خطوات بسيطة للحصول على الخدمة.</p>
+    </div>
+
+    <div class="steps-grid">
+        <article class="step-card">
+            <span class="step-number">1</span>
+
+            <h3>ابحث عن الخدمة</h3>
+
+            <p>
+                اختر نوع الخدمة أو استخدم موقعك لعرض
+                مقدمي الخدمات الأقرب إليك.
+            </p>
+        </article>
+
+        <article class="step-card">
+            <span class="step-number">2</span>
+
+            <h3>اختر مقدم الخدمة</h3>
+
+            <p>
+                شاهد الخبرة والخدمات والأسعار والتقييمات
+                قبل اتخاذ قرارك.
+            </p>
+        </article>
+
+        <article class="step-card">
+            <span class="step-number">3</span>
+
+            <h3>أرسل طلبك</h3>
+
+            <p>
+                حدد موعد ومكان الخدمة ثم تابع حالة الطلب
+                حتى يتم إنجازه.
+            </p>
+        </article>
+    </div>
+</section>

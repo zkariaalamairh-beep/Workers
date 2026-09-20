@@ -1,0 +1,129 @@
+﻿@model RegisterViewModel
+
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/pages/account.css"
+          asp-append-version="true" />
+}
+
+
+
+@{
+    ViewData["Title"] = "إنشاء حساب";
+}
+
+<section class="auth-page">
+    <div class="auth-card">
+        <div class="auth-heading">
+            <span class="auth-icon">📝</span>
+
+            <h1>إنشاء حساب جديد</h1>
+
+            <p>
+                أنشئ حسابًا لطلب الخدمات أو تقديمها لاحقًا.
+            </p>
+        </div>
+
+        <form method="post"
+              asp-controller="Account"
+              asp-action="Register">
+
+            <input asp-for="ReturnUrl" type="hidden" />
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger validation-summary">
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="FullName"
+                       class="form-label">
+                </label>
+
+                <input asp-for="FullName"
+                       class="form-control"
+                       autocomplete="name"
+                       placeholder="الاسم الكامل" />
+
+                <span asp-validation-for="FullName"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email"
+                       class="form-label">
+                </label>
+
+                <input asp-for="Email"
+                       class="form-control"
+                       autocomplete="email"
+                       placeholder="example@email.com" />
+
+                <span asp-validation-for="Email"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="PhoneNumber"
+                       class="form-label">
+                </label>
+
+                <input asp-for="PhoneNumber"
+                       class="form-control"
+                       autocomplete="tel"
+                       placeholder="+962..." />
+
+                <span asp-validation-for="PhoneNumber"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password"
+                       class="form-label">
+                </label>
+
+                <input asp-for="Password"
+                       class="form-control"
+                       autocomplete="new-password"
+                       placeholder="8 أحرف وتحتوي على رقم" />
+
+                <span asp-validation-for="Password"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="ConfirmPassword"
+                       class="form-label">
+                </label>
+
+                <input asp-for="ConfirmPassword"
+                       class="form-control"
+                       autocomplete="new-password"
+                       placeholder="أعد كتابة كلمة المرور" />
+
+                <span asp-validation-for="ConfirmPassword"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary w-100 auth-submit">
+                إنشاء الحساب
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            لديك حساب مسبقًا؟
+
+            <a asp-controller="Account"
+               asp-action="Login"
+               asp-route-returnUrl="@Model.ReturnUrl">
+                سجل الدخول
+            </a>
+        </div>
+    </div>
+</section>
